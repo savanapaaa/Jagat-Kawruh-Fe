@@ -1,0 +1,530 @@
+.nilai-siswa-guru-page {
+  flex: 1;
+  margin-left: 270px;
+  min-height: 100vh;
+  background: #F7FAFC;
+  transition: margin-left 0.3s ease;
+}
+
+.nilai-guru-header {
+  background: white;
+  padding: 24px 32px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger-btn span {
+  width: 24px;
+  height: 3px;
+  background: #2C3539;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #2C3539;
+}
+
+.header-content p {
+  margin: 4px 0 0 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.nilai-guru-container {
+  padding: 32px;
+}
+
+/* Tabs */
+.nilai-guru-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #E2E8F0;
+  background: white;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 16px 24px;
+  background: #F7FAFC;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-right: 1px solid #E2E8F0;
+}
+
+.tab-btn:last-child {
+  border-right: none;
+}
+
+.tab-btn:hover {
+  background: #EDF2F7;
+  color: #D4AF37;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  color: white;
+}
+
+.tab-btn.active::after {
+  display: none;
+}
+
+/* Tab Content */
+.tab-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Overview Table */
+.overview-table-container {
+  overflow-x: auto;
+}
+
+.overview-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.overview-table thead {
+  background: #F7FAFC;
+}
+
+.overview-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2C3539;
+  text-transform: uppercase;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.overview-table td {
+  padding: 16px;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 14px;
+  color: #4A5568;
+}
+
+.overview-table tbody tr:hover {
+  background: #F7FAFC;
+}
+
+.nilai-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.nilai-badge.nilai-tinggi {
+  background: #D4F8E8;
+  color: #0F9D58;
+}
+
+.nilai-badge.nilai-sedang {
+  background: #FFF4E6;
+  color: #F59E0B;
+}
+
+.nilai-badge.nilai-rendah {
+  background: #FFEAEA;
+  color: #E53E3E;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-aktif {
+  background: #D4F8E8;
+  color: #0F9D58;
+}
+
+/* Grading Header */
+.grading-header {
+  margin-bottom: 24px;
+}
+
+.grading-header h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #2C3539;
+}
+
+.select-kuis {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 2px solid #E2E8F0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-kuis:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Grading List */
+.grading-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grading-card {
+  background: #F7FAFC;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.grading-card-header {
+  padding: 16px 20px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.grading-card-header:hover {
+  background: #F7FAFC;
+}
+
+.student-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #2C3539;
+}
+
+.student-info .tanggal,
+.student-info .progress-text {
+  font-size: 13px;
+  color: #718096;
+  margin-top: 4px;
+  display: block;
+}
+
+.score-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.benar-total {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A5568;
+}
+
+.arrow-down,
+.arrow-up {
+  font-size: 12px;
+  color: #718096;
+  transition: transform 0.3s ease;
+}
+
+.arrow-up {
+  transform: rotate(180deg);
+}
+
+/* Grading Card Body */
+.grading-card-body {
+  padding: 20px;
+}
+
+.grading-card-body h5 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #2C3539;
+}
+
+.jawaban-item {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border-left: 4px solid #E2E8F0;
+}
+
+.soal-info {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #2C3539;
+}
+
+.jawaban-info {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4A5568;
+}
+
+.jawaban-info .label {
+  font-weight: 600;
+}
+
+.essay-grading {
+  margin: 12px 0;
+}
+
+.essay-grading label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C3539;
+  margin-bottom: 8px;
+}
+
+.input-score {
+  width: 100px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 2px solid #E2E8F0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.input-score:focus {
+  outline: none;
+  border-color: #D4AF37;
+}
+
+.status-jawaban {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.status-jawaban.benar {
+  background: #D4F8E8;
+  color: #0F9D58;
+}
+
+.status-jawaban.salah {
+  background: #FFEAEA;
+  color: #E53E3E;
+}
+
+.btn-save-grade {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-save-grade:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* PBL Grading */
+.pbl-submission-item {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border-left: 4px solid #D4AF37;
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.submission-header strong {
+  font-size: 14px;
+  color: #2C3539;
+}
+
+.submission-header .tanggal {
+  font-size: 12px;
+  color: #718096;
+}
+
+.submission-content p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C3539;
+}
+
+.jawaban-text {
+  padding: 12px;
+  background: #F7FAFC;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4A5568;
+  white-space: pre-wrap;
+}
+
+.submission-files {
+  margin-top: 12px;
+}
+
+.files-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.file-preview-item {
+  background: #F7FAFC;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #E2E8F0;
+}
+
+.preview-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.file-doc {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #4A5568;
+}
+
+.grade-form {
+  margin-top: 20px;
+  padding: 20px;
+  background: #F7FAFC;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C3539;
+  margin-bottom: 8px;
+}
+
+.textarea-feedback {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #E2E8F0;
+  border-radius: 8px;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.textarea-feedback:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.empty-grading {
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .nilai-siswa-guru-page {
+    margin-left: 0;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nilai-guru-container {
+    padding: 20px;
+  }
+
+  .nilai-guru-tabs {
+    overflow-x: auto;
+  }
+
+  .overview-table-container {
+    overflow-x: scroll;
+  }
+
+  .overview-table {
+    min-width: 600px;
+  }
+
+  .grading-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .score-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .files-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

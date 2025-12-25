@@ -1,0 +1,260 @@
+.tentang-kami-page {
+  min-height: 100vh;
+  background: #FFFBF0;
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.tentang-hero {
+  background: linear-gradient(135deg, #2C3539 0%, #3E3E3E 100%);
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.tentang-hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.tentang-hero p {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Content Section */
+.tentang-content {
+  padding: 80px 20px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.content-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2C3539;
+  margin-bottom: 24px;
+}
+
+.content-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #718096;
+  margin-bottom: 20px;
+}
+
+.content-image .image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(201, 169, 97, 0.1) 100%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+}
+
+.content-image .icon {
+  font-size: 120px;
+}
+
+/* Visi Misi Section */
+.visi-misi {
+  padding: 80px 20px;
+  background: white;
+}
+
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.vm-card {
+  padding: 40px;
+  background: #FFFBF0;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vm-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.vm-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2C3539;
+  margin-bottom: 16px;
+}
+
+.vm-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #718096;
+}
+
+/* Nilai Section */
+.nilai-section {
+  padding: 80px 20px;
+}
+
+.nilai-section h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2C3539;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.nilai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.nilai-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.nilai-card:hover {
+  transform: translateY(-5px);
+}
+
+.nilai-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.nilai-card h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2C3539;
+  margin-bottom: 12px;
+}
+
+.nilai-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #718096;
+}
+
+/* Team Section */
+.team-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.team-section h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2C3539;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #718096;
+  margin-bottom: 60px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: #FFFBF0;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin: 0 auto 20px;
+}
+
+.team-card h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2C3539;
+  margin-bottom: 8px;
+}
+
+.team-role {
+  font-size: 15px;
+  color: #718096;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tentang-hero {
+    padding: 60px 20px;
+  }
+
+  .tentang-hero h1 {
+    font-size: 36px;
+  }
+
+  .tentang-hero p {
+    font-size: 16px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .content-text h2 {
+    font-size: 28px;
+  }
+
+  .vm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nilai-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

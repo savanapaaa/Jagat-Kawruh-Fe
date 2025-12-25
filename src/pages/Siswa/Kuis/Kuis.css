@@ -1,0 +1,142 @@
+/* Kuis Grid */
+.kuis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.kuis-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kuis-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.kuis-header {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.kuis-icon {
+  font-size: 48px;
+}
+
+.kuis-nilai-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nilai-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F9D58;
+}
+
+.kuis-content {
+  padding: 24px;
+}
+
+.kuis-judul {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.kuis-mapel {
+  font-size: 14px;
+  color: #718096;
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.kuis-guru {
+  font-size: 13px;
+  color: #718096;
+  margin: 0 0 16px 0;
+}
+
+.kuis-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-icon {
+  font-size: 16px;
+}
+
+.meta-text {
+  font-size: 13px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.kuis-deadline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #FFF8E1;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.deadline-icon {
+  font-size: 16px;
+}
+
+.deadline-text {
+  font-size: 13px;
+  color: #F4B400;
+  font-weight: 600;
+}
+
+.btn-kuis-action {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-kuis-action:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .kuis-grid {
+    grid-template-columns: 1fr;
+  }
+}

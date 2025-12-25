@@ -1,0 +1,151 @@
+.pbl-grid-siswa {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.pbl-card-siswa {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pbl-card-siswa:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.pbl-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.pbl-icon-large {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deadline-badge {
+  padding: 6px 12px;
+  border: 2px solid;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: white;
+}
+
+.pbl-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.pbl-card-kelas {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+}
+
+.pbl-card-desc {
+  font-size: 14px;
+  color: #718096;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pbl-progress-info {
+  margin-bottom: 20px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #718096;
+}
+
+.progress-percent {
+  font-weight: 700;
+  color: #2C3539;
+}
+
+.progress-bar-pbl {
+  width: 100%;
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill-pbl {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.btn-pbl-action {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-pbl-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.empty-state-siswa {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-state-siswa .empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state-siswa h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0 0 12px 0;
+}
+
+.empty-state-siswa p {
+  font-size: 15px;
+  color: #718096;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pbl-grid-siswa {
+    grid-template-columns: 1fr;
+  }
+}

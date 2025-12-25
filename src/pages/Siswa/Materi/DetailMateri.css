@@ -1,0 +1,266 @@
+.detail-materi-page {
+  flex: 1;
+  padding: 30px;
+  background: linear-gradient(135deg, #FFFBF0 0%, #FAF5EF 100%);
+  min-height: 100vh;
+}
+
+.detail-materi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-back {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #D4AF37;
+  color: white;
+}
+
+.detail-materi-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.materi-hero {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.materi-hero-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.materi-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2C3539;
+  margin-bottom: 16px;
+}
+
+.materi-meta-info {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  padding: 8px 16px;
+  background: #FFF9E6;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #8B7355;
+  font-weight: 500;
+}
+
+.materi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.materi-section {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C3539;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4A5568;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #FFF9E6;
+  border-radius: 12px;
+  border: 2px dashed #D4AF37;
+  margin-bottom: 12px;
+}
+
+.download-note {
+  font-size: 14px;
+  color: #718096;
+  font-style: italic;
+  margin: 0;
+  padding: 8px 12px;
+  background: #F7FAFC;
+  border-radius: 6px;
+  border-left: 3px solid #4299E1;
+}
+
+.file-icon {
+  font-size: 40px;
+}
+
+.file-info {
+  flex: 1;
+}
+
+.file-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3539;
+  margin-bottom: 4px;
+}
+
+.file-size {
+  font-size: 14px;
+  color: #718096;
+  margin: 0;
+}
+
+.btn-download {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.learning-objectives {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.learning-objectives li {
+  padding: 12px 16px;
+  background: #F7FAFC;
+  border-left: 4px solid #D4AF37;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #4A5568;
+}
+
+.learning-objectives li::before {
+  content: "✓ ";
+  color: #D4AF37;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.materi-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-primary-action {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary-action {
+  padding: 16px 32px;
+  background: white;
+  color: #D4AF37;
+  border: 2px solid #D4AF37;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-action:hover {
+  background: #FFF9E6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detail-materi-page {
+    padding: 20px;
+  }
+
+  .materi-hero {
+    padding: 30px 20px;
+  }
+
+  .materi-title {
+    font-size: 24px;
+  }
+
+  .materi-hero-icon {
+    font-size: 60px;
+  }
+
+  .materi-section {
+    padding: 20px;
+  }
+
+  .materi-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary-action,
+  .btn-secondary-action {
+    width: 100%;
+  }
+
+  .file-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,173 @@
+/* Import shared dashboard styles */
+@import '../Siswa/SiswaDashboard.css';
+@import '../Admin/AdminDashboard.css';
+
+/* Hamburger Menu */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.hamburger-btn span {
+  width: 24px;
+  height: 3px;
+  background: #2C3539;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover span {
+  background: #D4AF37;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Guru specific styles */
+.tugas-guru-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tugas-guru-item {
+  padding: 20px;
+  background: #F7FAFC;
+  border-radius: 12px;
+  border-left: 4px solid #C9A961;
+}
+
+.tugas-guru-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tugas-guru-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3539;
+  margin: 0;
+}
+
+.tugas-deadline {
+  font-size: 13px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.tugas-progress-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar-wrapper {
+  flex: 1;
+}
+
+.progress-bar-bg {
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-text-small {
+  font-size: 13px;
+  color: #718096;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Kelas Grid */
+.kelas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.kelas-card {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border-left: 4px solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+}
+
+.kelas-card:hover {
+  transform: translateY(-2px);
+}
+
+.kelas-nama {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0 0 16px 0;
+}
+
+.kelas-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kelas-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kelas-icon {
+  font-size: 18px;
+}
+
+.kelas-value {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+}
+
+@media (max-width: 968px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  .kelas-grid {
+    grid-template-columns: 1fr;
+  }
+}
