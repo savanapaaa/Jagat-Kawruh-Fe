@@ -66,12 +66,6 @@ function Nilai() {
         </div>
 
         <div className="dashboard-content-area">
-          {/* Page Title */}
-          <div className="page-title-section">
-            <h1 className="page-main-title"><span className="icon-chart inline-icon"></span> Nilai Saya</h1>
-            <p className="page-subtitle">Lihat semua nilai kuis dan project PBL Anda</p>
-          </div>
-
           {/* Summary Cards */}
           <div className="summary-cards">
             <div className="summary-card">
@@ -121,9 +115,6 @@ function Nilai() {
                   <div className="empty-icon icon-quiz"></div>
                   <h3>Belum ada hasil kuis</h3>
                   <p>Kerjakan kuis untuk melihat nilai Anda</p>
-                  <button className="btn-primary" onClick={() => navigate('/siswa/kuis')}>
-                    Lihat Kuis
-                  </button>
                 </div>
               ) : (
                 <div className="nilai-table-container">
@@ -163,9 +154,6 @@ function Nilai() {
                   <div className="empty-icon icon-target"></div>
                   <h3>Belum ada nilai PBL</h3>
                   <p>Selesaikan project PBL untuk mendapatkan nilai</p>
-                  <button className="btn-primary" onClick={() => navigate('/siswa/pbl')}>
-                    Lihat PBL
-                  </button>
                 </div>
               ) : (
                 <div className="nilai-grid">

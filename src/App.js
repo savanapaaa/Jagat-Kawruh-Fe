@@ -27,7 +27,6 @@ import KerjakanPBL from './pages/Siswa/PBL/KerjakanPBL';
 import SiswaNilai from './pages/Siswa/Nilai';
 import GuruNilaiSiswa from './pages/Guru/NilaiSiswa';
 import GuruSiswa from './pages/Guru/Siswa';
-import AdminDataSiswa from './pages/Admin/DataSiswa';
 
 import './App.css';
 
@@ -63,11 +62,6 @@ function App() {
               </ProtectedRoute>
             } />
 
-            <Route path="/admin/siswa" element={
-              <ProtectedRoute allowedRoles={['admin']}>
-                <AdminDataSiswa />
-              </ProtectedRoute>
-            } />
 
             <Route path="/guru/dashboard" element={
               <ProtectedRoute allowedRoles={['guru']}>
@@ -105,11 +99,7 @@ function App() {
               </ProtectedRoute>
             } />
 
-            <Route path="/guru/siswa" element={
-              <ProtectedRoute allowedRoles={['guru']}>
-                <GuruSiswa />
-              </ProtectedRoute>
-            } />
+            {/* Data Siswa routes sementara dinonaktifkan */}
 
             <Route path="/siswa/dashboard" element={
               <ProtectedRoute allowedRoles={['siswa']}>

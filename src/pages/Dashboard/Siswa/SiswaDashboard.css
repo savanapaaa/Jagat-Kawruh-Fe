@@ -94,15 +94,42 @@
 }
 
 .user-menu {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: none; /* Hide logout button in header, use sidebar logout instead */
 }
 
 .user-name {
   font-size: 14px;
   font-weight: 600;
   color: #2C3539;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(201, 169, 97, 0.1) 100%);
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(201, 169, 97, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.user-name:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(201, 169, 97, 0.15) 100%);
+  border-color: rgba(201, 169, 97, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(201, 169, 97, 0.15);
+}
+
+.user-name::before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .logout-btn-small {
@@ -775,6 +802,38 @@
   }
 }
 
+@media (max-width: 768px) {
+  .dashboard-header-bar {
+    padding: 12px 16px;
+  }
+
+  .header-left {
+    gap: 12px;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Hide user-menu on mobile, show logout in sidebar */
+  .header-right .user-menu {
+    display: none;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .dashboard-content-new {
     padding: 16px;
@@ -798,5 +857,18 @@
 
   .tugas-nilai {
     width: 100%;
+  }
+
+  .header-title {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .dashboard-header-bar {
+    padding: 10px 14px;
   }
 }

@@ -44,6 +44,18 @@
   gap: 12px;
 }
 
+/* Main area follows sidebar width like Kelola pages */
+.dashboard-main {
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Dashboard Content Area - match Kelola layout */
+.dashboard-content-area {
+  padding: 24px 32px 32px;
+  flex: 1;
+}
+
 /* Guru specific styles */
 .tugas-guru-list {
   display: flex;
@@ -171,6 +183,14 @@
 
   .sidebar-overlay {
     display: block;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .dashboard-content-area {
+    padding: 20px;
   }
 
   .kelas-grid {

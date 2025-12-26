@@ -205,17 +205,12 @@ function SiswaDashboard() {
             </button>
             <div className="header-brand">
               <div className="logo-icon icon-chart"></div>
-              <h1 className="header-title">Jagat Kawruh</h1>
+              <h1 className="header-title"> Dashboard Siswa</h1>
             </div>
           </div>
           <div className="header-right">
             <NotificationDropdown userEmail={user?.email || 'guest'} />
-            <div className="user-menu">
-              <span className="user-name">{dataSiswa.nama}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
-            </div>
+            <span className="user-name">{dataSiswa.nama}</span>
           </div>
         </div>
 

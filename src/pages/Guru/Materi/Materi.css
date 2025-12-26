@@ -9,8 +9,12 @@
 .kelola-materi {
   flex: 1;
   margin-left: 270px;
-  padding: 32px;
+  padding: 0 0 32px 0;
   transition: margin-left 0.3s ease;
+}
+/* Wrapper konten di bawah header */
+.kelola-materi-content {
+  padding: 0 32px;
 }
 
 /* Hamburger Button */
@@ -50,17 +54,110 @@
 }
 
 /* Header */
-.kelola-header {
+.dashboard-header-bar {
+  background: white;
+  padding: 20px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 80px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  color: #718096;
+  margin: 4px 0 0 0;
+}
+
+.dashboard-header-bar h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2C3539;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C3539;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(201, 169, 97, 0.1) 100%);
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(201, 169, 97, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.user-name:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(201, 169, 97, 0.15) 100%);
+  border-color: rgba(201, 169, 97, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(201, 169, 97, 0.15);
+}
+
+.user-name::before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logout-btn-small {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-btn-small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .kelola-header h1 {
@@ -101,7 +198,7 @@
   background: white;
   border-radius: 16px;
   padding: 28px;
-  margin-bottom: 32px;
+  margin: 24px 0 32px 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -191,6 +288,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
+  margin-top: 24px;
 }
 
 .materi-card {
@@ -333,6 +431,16 @@
 @media (max-width: 968px) {
   .kelola-materi {
     margin-left: 0;
+    padding: 0 0 24px 0;
+  }
+
+  .dashboard-header-bar {
+    min-height: 60px;
+    padding: 16px 20px;
+  }
+
+  .header-title {
+    font-size: 20px;
   }
 
   .hamburger-btn {
@@ -346,21 +454,23 @@
 
 @media (max-width: 768px) {
   .kelola-materi {
-    padding: 20px;
+    padding: 0 0 20px 0;
   }
 
-  .kelola-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .dashboard-header-bar {
+    padding: 10px 14px;
   }
 
-  .kelola-header h1 {
-    font-size: 24px;
+  .header-left {
+    gap: 12px;
   }
 
-  .btn-tambah {
-    width: 100%;
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-title {
+    font-size: 20px;
   }
 
   .materi-grid {
@@ -369,5 +479,25 @@
 
   .form-container {
     padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header-bar {
+    padding: 8px 12px;
+    min-height: 56px;
+  }
+
+  .header-title {
+    font-size: 18px;
+  }
+
+   .header-subtitle {
+    display: none;
+  }
+
+  .btn-tambah {
+    padding: 8px 14px;
+    font-size: 12px;
   }
 }

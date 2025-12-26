@@ -98,12 +98,7 @@ function Kuis() {
           </div>
           <div className="header-right">
             <NotificationDropdown userEmail={user?.email || 'guest'} />
-            <div className="user-menu">
-              <span className="user-name">{user?.name || 'Siswa'}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
-            </div>
+            <span className="user-name">{user?.name || 'Siswa'}</span>
           </div>
         </div>
 
@@ -148,10 +143,6 @@ function Kuis() {
                 <div className="kuis-content">
                   <h3 className="kuis-judul">{kuis.judul}</h3>
                   <p className="kuis-mapel">{kuis.mapel}</p>
-                  <p className="kuis-guru">
-                    <span className="small-icon icon-user"></span>
-                    {kuis.guru}
-                  </p>
                   
                   <div className="kuis-meta">
                     <div className="meta-item">

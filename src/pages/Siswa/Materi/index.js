@@ -99,12 +99,7 @@ function Materi() {
           </div>
           <div className="header-right">
             <NotificationDropdown userEmail={user?.email || 'guest'} />
-            <div className="user-menu">
-              <span className="user-name">{user?.name || 'Siswa'}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
-            </div>
+            <span className="user-name">{user?.name || 'Siswa'}</span>
           </div>
         </div>
 
@@ -150,10 +145,6 @@ function Materi() {
                   <span className="materi-bab">{materi.bab}</span>
                   <h3 className="materi-judul">{materi.judul}</h3>
                   <p className="materi-mapel">{materi.mapel}</p>
-                  <p className="materi-guru">
-                    <span className="small-icon icon-user"></span>
-                    {materi.guru}
-                  </p>
                   
                   <div className="materi-meta">
                     <span className="materi-durasi">

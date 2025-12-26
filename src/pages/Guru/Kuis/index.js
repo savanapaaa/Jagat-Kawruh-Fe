@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
+import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getKuisList, addKuis, updateKuis, deleteKuis } from '../../../services/dataService';
 import '../../../styles/icons.css';
 import './Kuis.css';
 
 function KelolaKuis() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [kuisList, setKuisList] = useState([]);
@@ -99,7 +102,7 @@ function KelolaKuis() {
       {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
       
       <div className="kelola-kuis">
-        <div className="kelola-header">
+        <div className="dashboard-header-bar">
           <div className="header-left">
             <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <span></span>
@@ -107,19 +110,26 @@ function KelolaKuis() {
               <span></span>
             </button>
             <div>
-              <h1>Kelola Kuis</h1>
+              <h1 className="header-title">Kelola Kuis</h1>
               <p className="header-subtitle">Kelola dan buat kuis untuk siswa</p>
             </div>
           </div>
-          <button 
-            className="btn-tambah"
-            onClick={() => setShowForm(!showForm)}
-          >
-            {showForm ? '❌ Batal' : '➕ Tambah Kuis'}
-          </button>
+          <div className="header-right">
+            <button 
+              className="btn-tambah"
+              onClick={() => setShowForm(!showForm)}
+            >
+              {showForm ? '❌ Batal' : '➕ Tambah Kuis'}
+            </button>
+            <NotificationDropdown userEmail={user?.email || 'guru'} />
+            <div className="user-menu">
+              <span className="user-name">{user?.name || 'Guru'}</span>
+            </div>
+          </div>
         </div>
 
-      {showForm && (
+      <div className="kelola-kuis-content">
+        {showForm && (
         <div className="form-container">
           <h3>{editingKuis ? 'Edit Kuis' : 'Tambah Kuis Baru'}</h3>
           <form onSubmit={handleSubmit}>
@@ -195,70 +205,71 @@ function KelolaKuis() {
             </div>
           </form>
         </div>
-      )}
+        )}
 
-      {kuisList.length === 0 ? (
-        <div className="empty-state">
-          <div className="empty-state-icon icon-quiz"></div>
-          <h3>Belum ada kuis</h3>
-          <p>Klik "Tambah Kuis" untuk memulai membuat kuis untuk siswa</p>
-        </div>
-      ) : (
-        <div className="kuis-grid">
-          {kuisList.map((kuis) => (
-            <div key={kuis.id} className="kuis-card">
-              <div className="kuis-header">
-                <div className="kuis-icon icon-quiz"></div>
-                <span className={`status-badge ${kuis.status.toLowerCase()}`}>
-                  {kuis.status}
-                </span>
-              </div>
-              <div className="kuis-content">
-                <h3 className="kuis-judul">{kuis.judul}</h3>
-                <span className="kuis-kelas">{kuis.kelas}</span>
-                <div className="kuis-meta">
-                  <div className="meta-item">
-                    <span className="meta-icon icon-clock"></span>
-                    <span className="meta-text">{kuis.durasi} menit</span>
+        {kuisList.length === 0 ? (
+          <div className="empty-state">
+            <div className="empty-state-icon icon-quiz"></div>
+            <h3>Belum ada kuis</h3>
+            <p>Klik "Tambah Kuis" untuk memulai membuat kuis untuk siswa</p>
+          </div>
+        ) : (
+          <div className="kuis-grid">
+            {kuisList.map((kuis) => (
+              <div key={kuis.id} className="kuis-card">
+                <div className="kuis-header">
+                  <div className="kuis-icon icon-quiz"></div>
+                  <span className={`status-badge ${kuis.status.toLowerCase()}`}>
+                    {kuis.status}
+                  </span>
+                </div>
+                <div className="kuis-content">
+                  <h3 className="kuis-judul">{kuis.judul}</h3>
+                  <span className="kuis-kelas">{kuis.kelas}</span>
+                  <div className="kuis-meta">
+                    <div className="meta-item">
+                      <span className="meta-icon icon-clock"></span>
+                      <span className="meta-text">{kuis.durasi} menit</span>
+                    </div>
+                    <div className="meta-item">
+                      <span className="meta-icon icon-quiz"></span>
+                      <span className="meta-text">{kuis.jumlahSoal} soal</span>
+                    </div>
                   </div>
-                  <div className="meta-item">
-                    <span className="meta-icon icon-quiz"></span>
-                    <span className="meta-text">{kuis.jumlahSoal} soal</span>
+                  <div className="kuis-actions">
+                    <button 
+                      className="btn-soal"
+                      onClick={() => navigate(`/guru/kuis/${kuis.id}/soal`)}
+                    >
+                      Soal
+                    </button>
+                    <button 
+                      className="btn-toggle"
+                      onClick={() => toggleStatus(kuis.id)}
+                    >
+                      {kuis.status === 'Aktif' ? 'Pause' : 'Play'}
+                    </button>
+                    <button 
+                      className="btn-edit"
+                      onClick={() => handleEdit(kuis)}
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      className="btn-delete"
+                      onClick={() => handleDelete(kuis.id)}
+                    >
+                      Hapus
+                    </button>
                   </div>
                 </div>
-                <div className="kuis-actions">
-                  <button 
-                    className="btn-soal"
-                    onClick={() => navigate(`/guru/kuis/${kuis.id}/soal`)}
-                  >
-                    Soal
-                  </button>
-                  <button 
-                    className="btn-toggle"
-                    onClick={() => toggleStatus(kuis.id)}
-                  >
-                    {kuis.status === 'Aktif' ? 'Pause' : 'Play'}
-                  </button>
-                  <button 
-                    className="btn-edit"
-                    onClick={() => handleEdit(kuis)}
-                  >
-                    Edit
-                  </button>
-                  <button 
-                    className="btn-delete"
-                    onClick={() => handleDelete(kuis.id)}
-                  >
-                    Hapus
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-    </div>
+  </div>
   );
 }
 

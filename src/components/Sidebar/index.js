@@ -1,10 +1,19 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import '../../styles/icons.css';
 import './Sidebar.css';
 
 function Sidebar({ role = 'siswa', isOpen = false, onClose }) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    onClose();
+  };
 
   const menuItems = {
     siswa: [
@@ -19,12 +28,10 @@ function Sidebar({ role = 'siswa', isOpen = false, onClose }) {
       { path: '/guru/materi', iconType: 'book', label: 'Kelola Materi' },
       { path: '/guru/kuis', iconType: 'quiz', label: 'Kelola Kuis' },
       { path: '/guru/pbl', iconType: 'target', label: 'Kelola PBL' },
-      { path: '/guru/siswa', iconType: 'user', label: 'Data Siswa' },
       { path: '/guru/nilai-siswa', iconType: 'trophy', label: 'Nilai Siswa' },
     ],
     admin: [
       { path: '/admin/dashboard', iconType: 'chart', label: 'Dashboard' },
-      { path: '/admin/siswa', iconType: 'user', label: 'Data Siswa' },
     ],
   };
 
@@ -55,6 +62,13 @@ function Sidebar({ role = 'siswa', isOpen = false, onClose }) {
           </Link>
         ))}
       </nav>
+
+      <div className="sidebar-footer">
+        <button className="logout-btn-sidebar" onClick={handleLogout}>
+          <span className="menu-icon icon-logout"></span>
+          <span className="menu-label">Keluar</span>
+        </button>
+      </div>
     </div>
   );
 }

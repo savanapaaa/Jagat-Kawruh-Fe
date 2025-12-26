@@ -94,12 +94,7 @@ function PBL() {
           </div>
           <div className="header-right">
             <NotificationDropdown userEmail={user?.email || 'guest'} />
-            <div className="user-menu">
-              <span className="user-name">{user?.name || 'Siswa'}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
-            </div>
+            <span className="user-name">{user?.name || 'Siswa'}</span>
           </div>
         </div>
 
@@ -152,10 +147,7 @@ function PBL() {
                   </div>
 
                   <h3 className="pbl-card-title">{pbl.judul}</h3>
-                  <p className="pbl-card-kelas">
-                    <span className="small-icon icon-book"></span>
-                    {pbl.kelas}
-                  </p>
+                  <p className="pbl-card-kelas">{pbl.kelas}</p>
                   <p className="pbl-card-desc">{pbl.deskripsi}</p>
 
                   <div className="pbl-progress-info">

@@ -87,9 +87,6 @@ function GuruDashboard() {
             <NotificationDropdown userEmail={user?.email || 'guru'} />
             <div className="user-menu">
               <span className="user-name">{user?.name || 'Guru'}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
             </div>
           </div>
         </div>

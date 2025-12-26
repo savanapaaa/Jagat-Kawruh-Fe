@@ -83,9 +83,6 @@ function AdminDashboard() {
             <NotificationDropdown userEmail={user?.email || 'admin'} />
             <div className="user-menu">
               <span className="user-name">{user?.name || 'Admin'}</span>
-              <button className="logout-btn-small" onClick={handleLogout}>
-                Keluar
-              </button>
             </div>
           </div>
         </div>

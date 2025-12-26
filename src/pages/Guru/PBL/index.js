@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
+import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getPBLList, addPBL, updatePBL, deletePBL } from '../../../services/dataService';
 import '../../../styles/icons.css';
 import './PBL.css';
 
 function KelolaPBL() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [pblList, setPblList] = useState([]);
@@ -122,7 +125,7 @@ function KelolaPBL() {
       {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
       
       <div className="kelola-pbl">
-        <div className="kelola-header">
+        <div className="dashboard-header-bar">
           <div className="header-left">
             <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <span></span>
@@ -130,17 +133,25 @@ function KelolaPBL() {
               <span></span>
             </button>
             <div>
-              <h1>Kelola Problem Based Learning</h1>
-              <p className="header-subtitle">Buat dan kelola project PBL dengan 5 sintaks</p>
+              <h1 className="header-title">Kelola PBL</h1>
+              <p className="header-subtitle">Kelola dan buat Project Based Learning</p>
             </div>
           </div>
-          <button 
-            className="btn-tambah"
-            onClick={() => setShowForm(!showForm)}
-          >
-            {showForm ? '❌ Batal' : '➕ Tambah PBL Project'}
-          </button>
+          <div className="header-right">
+            <button 
+              className="btn-tambah"
+              onClick={() => setShowForm(!showForm)}
+            >
+              {showForm ? '❌ Batal' : '➕ Tambah PBL'}
+            </button>
+            <NotificationDropdown userEmail={user?.email || 'guru'} />
+            <div className="user-menu">
+              <span className="user-name">{user?.name || 'Guru'}</span>
+            </div>
+          </div>
         </div>
+
+        <div className="kelola-pbl-content pbl-content">
 
         {showForm && (
           <div className="form-container">
@@ -271,6 +282,7 @@ function KelolaPBL() {
               <p>Klik tombol "Tambah PBL Project" untuk membuat project Problem Based Learning pertama Anda</p>
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>

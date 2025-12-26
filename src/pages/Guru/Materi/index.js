@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar';
+import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getMateriList, addMateri, updateMateri, deleteMateri } from '../../../services/dataService';
 import '../../../styles/icons.css';
 import './Materi.css';
 
 function KelolaMateri() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [materiList, setMateriList] = useState([]);
 
@@ -82,7 +87,7 @@ function KelolaMateri() {
       {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
       
       <div className="kelola-materi">
-        <div className="kelola-header">
+        <div className="dashboard-header-bar">
           <div className="header-left">
             <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <span></span>
@@ -90,19 +95,26 @@ function KelolaMateri() {
               <span></span>
             </button>
             <div>
-              <h1>Kelola Materi</h1>
+              <h1 className="header-title">Kelola Materi</h1>
               <p className="header-subtitle">Kelola dan tambahkan materi pembelajaran</p>
             </div>
           </div>
-          <button 
-            className="btn-tambah"
-            onClick={() => setShowForm(!showForm)}
-          >
-            {showForm ? '❌ Batal' : '➕ Tambah Materi'}
-          </button>
+          <div className="header-right">
+            <button 
+              className="btn-tambah"
+              onClick={() => setShowForm(!showForm)}
+            >
+              {showForm ? '❌ Batal' : '➕ Tambah Materi'}
+            </button>
+            <NotificationDropdown userEmail={user?.email || 'guru'} />
+            <div className="user-menu">
+              <span className="user-name">{user?.name || 'Guru'}</span>
+            </div>
+          </div>
         </div>
 
-      {showForm && (
+      <div className="kelola-materi-content">
+        {showForm && (
         <div className="form-container">
           <h3>{editingMateri ? 'Edit Materi' : 'Tambah Materi Baru'}</h3>
           <form onSubmit={handleSubmit}>
@@ -160,49 +172,50 @@ function KelolaMateri() {
             </div>
           </form>
         </div>
-      )}
+        )}
 
-      {materiList.length === 0 ? (
-        <div className="empty-state">
-          <div className="empty-state-icon icon-book"></div>
-          <h3>Belum ada materi</h3>
-          <p>Klik "Tambah Materi" untuk memulai mengelola materi pembelajaran</p>
-        </div>
-      ) : (
-        <div className="materi-grid">
-          {materiList.map((materi) => (
-            <div key={materi.id} className="materi-card">
-              <div className="materi-thumbnail">
-                <div className="icon-book"></div>
-              </div>
-              <div className="materi-content">
-                <h3 className="materi-judul">{materi.judul}</h3>
-                <span className="materi-kelas">{materi.kelas}</span>
-                <p className="materi-deskripsi">{materi.deskripsi}</p>
-                <div className="materi-file">
-                  <span className="icon-folder inline-icon-sm"></span> {materi.file}
+        {materiList.length === 0 ? (
+          <div className="empty-state">
+            <div className="empty-state-icon icon-book"></div>
+            <h3>Belum ada materi</h3>
+            <p>Klik "Tambah Materi" untuk memulai mengelola materi pembelajaran</p>
+          </div>
+        ) : (
+          <div className="materi-grid">
+            {materiList.map((materi) => (
+              <div key={materi.id} className="materi-card">
+                <div className="materi-thumbnail">
+                  <div className="icon-book"></div>
                 </div>
-                <div className="materi-actions">
-                  <button 
-                    className="btn-edit"
-                    onClick={() => handleEdit(materi)}
-                  >
-                    Edit
-                  </button>
-                  <button 
-                    className="btn-delete"
-                    onClick={() => handleDelete(materi.id)}
-                  >
-                    Hapus
-                  </button>
+                <div className="materi-content">
+                  <h3 className="materi-judul">{materi.judul}</h3>
+                  <span className="materi-kelas">{materi.kelas}</span>
+                  <p className="materi-deskripsi">{materi.deskripsi}</p>
+                  <div className="materi-file">
+                    <span className="icon-folder inline-icon-sm"></span> {materi.file}
+                  </div>
+                  <div className="materi-actions">
+                    <button 
+                      className="btn-edit"
+                      onClick={() => handleEdit(materi)}
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      className="btn-delete"
+                      onClick={() => handleDelete(materi.id)}
+                    >
+                      Hapus
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-    </div>
+  </div>
   );
 }
 
