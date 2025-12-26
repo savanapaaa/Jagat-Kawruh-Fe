@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar';
 import { getKuisList, addKuis, updateKuis, deleteKuis } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './Kuis.css';
 
 function KelolaKuis() {
@@ -186,7 +187,7 @@ function KelolaKuis() {
 
             <div className="form-actions">
               <button type="submit" className="btn-submit">
-                {editingKuis ? '💾 Update' : '✅ Simpan'}
+                {editingKuis ? 'Update' : 'Simpan'}
               </button>
               <button type="button" className="btn-cancel" onClick={resetForm}>
                 Batal
@@ -198,7 +199,7 @@ function KelolaKuis() {
 
       {kuisList.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state-icon">📝</div>
+          <div className="empty-state-icon icon-quiz"></div>
           <h3>Belum ada kuis</h3>
           <p>Klik "Tambah Kuis" untuk memulai membuat kuis untuk siswa</p>
         </div>
@@ -207,7 +208,7 @@ function KelolaKuis() {
           {kuisList.map((kuis) => (
             <div key={kuis.id} className="kuis-card">
               <div className="kuis-header">
-                <div className="kuis-icon">📝</div>
+                <div className="kuis-icon icon-quiz"></div>
                 <span className={`status-badge ${kuis.status.toLowerCase()}`}>
                   {kuis.status}
                 </span>
@@ -217,11 +218,11 @@ function KelolaKuis() {
                 <span className="kuis-kelas">{kuis.kelas}</span>
                 <div className="kuis-meta">
                   <div className="meta-item">
-                    <span className="meta-icon">⏱️</span>
+                    <span className="meta-icon icon-clock"></span>
                     <span className="meta-text">{kuis.durasi} menit</span>
                   </div>
                   <div className="meta-item">
-                    <span className="meta-icon">📋</span>
+                    <span className="meta-icon icon-quiz"></span>
                     <span className="meta-text">{kuis.jumlahSoal} soal</span>
                   </div>
                 </div>
@@ -230,25 +231,25 @@ function KelolaKuis() {
                     className="btn-soal"
                     onClick={() => navigate(`/guru/kuis/${kuis.id}/soal`)}
                   >
-                    📝 Soal
+                    Soal
                   </button>
                   <button 
                     className="btn-toggle"
                     onClick={() => toggleStatus(kuis.id)}
                   >
-                    {kuis.status === 'Aktif' ? '⏸️' : '▶️'}
+                    {kuis.status === 'Aktif' ? 'Pause' : 'Play'}
                   </button>
                   <button 
                     className="btn-edit"
                     onClick={() => handleEdit(kuis)}
                   >
-                    ✏️
+                    Edit
                   </button>
                   <button 
                     className="btn-delete"
                     onClick={() => handleDelete(kuis.id)}
                   >
-                    🗑️
+                    Hapus
                   </button>
                 </div>
               </div>

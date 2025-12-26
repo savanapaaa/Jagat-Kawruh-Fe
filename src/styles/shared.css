@@ -1,0 +1,397 @@
+/* ========================================
+   SHARED STYLES - JAGAT KAWRUH
+   Konsistensi UI/UX di seluruh aplikasi
+   ======================================== */
+
+/* ========== COLOR VARIABLES ========== */
+:root {
+  /* Primary Colors (Gold/Yellow) */
+  --primary-color: #D4AF37;
+  --primary-dark: #C9A961;
+  --primary-light: #FFF9E6;
+  
+  /* Neutral Colors */
+  --text-primary: #2C3539;
+  --text-secondary: #718096;
+  --text-tertiary: #A0AEC0;
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7FAFC;
+  --bg-tertiary: #E2E8F0;
+  
+  /* Border Colors */
+  --border-light: #E2E8F0;
+  --border-medium: #CBD5E0;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-primary: 0 4px 12px rgba(212, 175, 55, 0.3);
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* Font Sizes */
+  --font-xs: 12px;
+  --font-sm: 13px;
+  --font-md: 14px;
+  --font-lg: 16px;
+  --font-xl: 18px;
+  --font-2xl: 24px;
+  --font-3xl: 28px;
+  --font-4xl: 32px;
+  
+  /* Icon Sizes */
+  --icon-sm: 18px;
+  --icon-md: 24px;
+  --icon-lg: 32px;
+  --icon-xl: 48px;
+  --icon-2xl: 56px;
+}
+
+/* ========== BUTTON STYLES ========== */
+
+/* Primary Button - Solid Gold */
+.btn-primary {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-size: var(--font-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+/* Secondary Button - Outline */
+.btn-secondary {
+  padding: 12px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--primary-color);
+  font-size: var(--font-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+/* Tertiary Button - Soft/Light */
+.btn-tertiary {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: var(--font-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-tertiary:hover {
+  background: var(--border-medium);
+}
+
+/* Small Button Variant */
+.btn-small {
+  padding: 8px 16px;
+  font-size: var(--font-sm);
+}
+
+/* Large Button Variant */
+.btn-large {
+  padding: 14px 24px;
+  font-size: var(--font-lg);
+}
+
+/* Full Width Button */
+.btn-full {
+  width: 100%;
+}
+
+/* ========== CARD STYLES ========== */
+
+.card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-compact {
+  padding: 20px;
+}
+
+.card-comfortable {
+  padding: 28px;
+}
+
+/* ========== BADGE STYLES ========== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+}
+
+.badge-primary {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.badge-success {
+  background: #D4EDDA;
+  color: #155724;
+}
+
+.badge-warning {
+  background: #FFF3E0;
+  color: var(--primary-dark);
+}
+
+.badge-info {
+  background: #D1ECF1;
+  color: #0C5460;
+}
+
+/* ========== PROGRESS BAR ========== */
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-bar-thick {
+  height: 12px;
+}
+
+.progress-bar-thin {
+  height: 6px;
+}
+
+/* ========== ICON STYLES ========== */
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 40px;
+  height: 40px;
+  font-size: var(--icon-md);
+}
+
+.icon-md {
+  width: 48px;
+  height: 48px;
+  font-size: var(--icon-lg);
+}
+
+.icon-lg {
+  width: 60px;
+  height: 60px;
+  font-size: var(--icon-xl);
+}
+
+.icon-xl {
+  width: 72px;
+  height: 72px;
+  font-size: var(--icon-2xl);
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-gold { color: var(--primary-color); }
+
+.bg-primary { background: var(--bg-primary); }
+.bg-secondary { background: var(--bg-secondary); }
+.bg-gold-light { background: var(--primary-light); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* ========== CONSISTENT TRANSITIONS ========== */
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+
+.transition-colors {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========== HOVER EFFECTS ========== */
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-lift-sm:hover {
+  transform: translateY(-2px);
+}
+
+.hover-shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-primary:hover {
+  color: var(--primary-color);
+}
+
+/* ========== RESPONSIVE UTILITIES ========== */
+
+/* Mobile First Breakpoints */
+/* 
+  xs: 0-480px (small phones)
+  sm: 481-768px (phones/tablets)
+  md: 769-968px (tablets/small laptops)
+  lg: 969px+ (desktops)
+*/
+
+/* Hide on Mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on Desktop */
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Responsive Text Sizes */
+@media (max-width: 768px) {
+  .text-responsive-lg {
+    font-size: 20px !important;
+  }
+  
+  .text-responsive-xl {
+    font-size: 24px !important;
+  }
+  
+  .text-responsive-2xl {
+    font-size: 28px !important;
+  }
+}
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+  .p-responsive {
+    padding: 16px !important;
+  }
+  
+  .px-responsive {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .py-responsive {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  
+  .m-responsive {
+    margin: 16px !important;
+  }
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .grid-responsive-1 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 968px) {
+  .grid-responsive-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Stack on Mobile */
+@media (max-width: 768px) {
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+}
+

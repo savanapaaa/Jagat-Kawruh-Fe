@@ -26,6 +26,8 @@ import SiswaPBL from './pages/Siswa/PBL';
 import KerjakanPBL from './pages/Siswa/PBL/KerjakanPBL';
 import SiswaNilai from './pages/Siswa/Nilai';
 import GuruNilaiSiswa from './pages/Guru/NilaiSiswa';
+import GuruSiswa from './pages/Guru/Siswa';
+import AdminDataSiswa from './pages/Admin/DataSiswa';
 
 import './App.css';
 
@@ -58,6 +60,12 @@ function App() {
             <Route path="/admin/dashboard" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <AdminDashboard />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/siswa" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminDataSiswa />
               </ProtectedRoute>
             } />
 
@@ -94,6 +102,12 @@ function App() {
             <Route path="/guru/nilai-siswa" element={
               <ProtectedRoute allowedRoles={['guru']}>
                 <GuruNilaiSiswa />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/guru/siswa" element={
+              <ProtectedRoute allowedRoles={['guru']}>
+                <GuruSiswa />
               </ProtectedRoute>
             } />
 

@@ -44,14 +44,15 @@
 }
 
 .summary-icon {
-  font-size: 32px;
   width: 56px;
   height: 56px;
+  min-width: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #FFF9E6 0%, #FFF3D6 100%);
   border-radius: 12px;
+  color: #C9A961;
 }
 
 .summary-info {

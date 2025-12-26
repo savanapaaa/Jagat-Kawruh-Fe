@@ -49,6 +49,23 @@
   padding: 32px;
 }
 
+/* Inline icon styles */
+.inline-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.inline-icon-sm {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
 /* Tabs */
 .nilai-guru-tabs {
   display: flex;

@@ -1,0 +1,202 @@
+/* ========== SMOOTH ANIMATIONS & TRANSITIONS ========== */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale pulse */
+@keyframes scalePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Gentle bounce */
+@keyframes gentleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Rotate icon */
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  }
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+/* Fade in on load */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 0.5s ease-out 0.2s both;
+}
+
+/* Slide animations */
+.animate-slide-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.4s ease-out;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-transition-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card animations on scroll */
+.card-stagger {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.card-stagger:nth-child(1) { animation-delay: 0.1s; }
+.card-stagger:nth-child(2) { animation-delay: 0.2s; }
+.card-stagger:nth-child(3) { animation-delay: 0.3s; }
+.card-stagger:nth-child(4) { animation-delay: 0.4s; }
+.card-stagger:nth-child(5) { animation-delay: 0.5s; }
+.card-stagger:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 8px;
+}
+
+/* Button press effect */
+.btn-press {
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+
+.btn-press:active {
+  transform: scale(0.95);
+}
+
+/* Icon rotation on hover */
+.icon-rotate-hover {
+  transition: transform 0.3s ease;
+}
+
+.icon-rotate-hover:hover {
+  transform: rotate(15deg);
+}
+
+/* Progress bar animation */
+.progress-animated {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Badge bounce */
+.badge-bounce {
+  animation: gentleBounce 2s ease-in-out infinite;
+}
+
+/* Notification pulse */
+.notification-pulse {
+  animation: scalePulse 2s ease-in-out infinite;
+}

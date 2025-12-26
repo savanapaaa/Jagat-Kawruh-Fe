@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
 import NotificationDropdown from '../../../components/NotificationDropdown';
+import '../../../styles/icons.css';
 import './GuruDashboard.css';
 
 function GuruDashboard() {
@@ -23,10 +24,10 @@ function GuruDashboard() {
   };
 
   const statsData = [
-    { icon: '📚', label: 'Materi Saya', value: '25', color: '#4285F4' },
-    { icon: '✍️', label: 'Tugas Aktif', value: '12', color: '#0F9D58' },
-    { icon: '👨‍🎓', label: 'Total Siswa', value: '150', color: '#F4B400' },
-    { icon: '📝', label: 'Perlu Diperiksa', value: '8', color: '#DB4437' },
+    { icon: 'book', label: 'Materi Saya', value: '25', color: '#4285F4' },
+    { icon: 'quiz', label: 'Tugas Aktif', value: '12', color: '#0F9D58' },
+    { icon: 'user', label: 'Total Siswa', value: '150', color: '#F4B400' },
+    { icon: 'check', label: 'Perlu Diperiksa', value: '8', color: '#DB4437' },
   ];
 
   const tugasTerbaru = [
@@ -100,7 +101,7 @@ function GuruDashboard() {
             {statsData.map((stat, index) => (
               <div key={index} className="stat-card-admin">
                 <div className="stat-icon-admin" style={{ background: `${stat.color}15` }}>
-                  <span style={{ fontSize: '32px' }}>{stat.icon}</span>
+                  <span className={`icon-${stat.icon}`} style={{ fontSize: '32px', color: stat.color }}></span>
                 </div>
                 <div className="stat-info-admin">
                   <p className="stat-label-admin">{stat.label}</p>
@@ -157,11 +158,11 @@ function GuruDashboard() {
                     <h4 className="kelas-nama">{kelas.nama}</h4>
                     <div className="kelas-info">
                       <div className="kelas-info-item">
-                        <span className="kelas-icon">👨‍🎓</span>
+                        <span className="kelas-icon icon-user"></span>
                         <span className="kelas-value">{kelas.siswa} Siswa</span>
                       </div>
                       <div className="kelas-info-item">
-                        <span className="kelas-icon">📚</span>
+                        <span className="kelas-icon icon-book"></span>
                         <span className="kelas-value">{kelas.materi} Materi</span>
                       </div>
                     </div>

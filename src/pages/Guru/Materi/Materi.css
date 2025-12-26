@@ -64,10 +64,11 @@
 }
 
 .kelola-header h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: #2C3539;
   margin: 0;
+  line-height: 1.2;
 }
 
 .header-subtitle {
@@ -99,9 +100,9 @@
 .form-container {
   background: white;
   border-radius: 16px;
-  padding: 32px;
+  padding: 28px;
   margin-bottom: 32px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .form-container h3 {
@@ -196,7 +197,7 @@
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -211,8 +212,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 56px;
   border-bottom: 1px solid #E2E8F0;
+  color: white;
+}
+
+.materi-thumbnail > div {
+  width: 56px;
+  height: 56px;
 }
 
 .materi-content {
@@ -304,8 +310,10 @@
 }
 
 .empty-state-icon {
-  font-size: 64px;
-  margin-bottom: 16px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  color: #CBD5E0;
 }
 
 .empty-state h3 {

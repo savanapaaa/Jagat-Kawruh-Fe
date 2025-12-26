@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
+import '../../../styles/icons.css';
 import './Nilai.css';
 
 function Nilai() {
@@ -40,42 +41,55 @@ function Nilai() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-layout">
       <Sidebar role="siswa" isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
       
-      <div className="nilai-siswa-page">
-        <div className="nilai-header">
-          <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <div className="header-content">
-            <h1>📊 Nilai Saya</h1>
-            <p>Lihat semua nilai kuis dan project PBL Anda</p>
+      <div className="dashboard-main">
+        <div className="dashboard-header-bar">
+          <div className="header-left">
+            <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div className="header-brand">
+              <div className="logo-icon icon-trophy"></div>
+              <h1 className="header-title">Nilai</h1>
+            </div>
+          </div>
+          <div className="header-right">
+            <div className="user-menu">
+              <span className="user-name">{user?.name || 'Siswa'}</span>
+            </div>
           </div>
         </div>
 
-        <div className="nilai-container">
+        <div className="dashboard-content-area">
+          {/* Page Title */}
+          <div className="page-title-section">
+            <h1 className="page-main-title"><span className="icon-chart inline-icon"></span> Nilai Saya</h1>
+            <p className="page-subtitle">Lihat semua nilai kuis dan project PBL Anda</p>
+          </div>
+
           {/* Summary Cards */}
           <div className="summary-cards">
             <div className="summary-card">
-              <div className="summary-icon">📝</div>
+              <div className="summary-icon icon-quiz"></div>
               <div className="summary-info">
                 <h3>Total Kuis</h3>
                 <p className="summary-value">{hasilKuis.length}</p>
               </div>
             </div>
             <div className="summary-card">
-              <div className="summary-icon">📈</div>
+              <div className="summary-icon icon-chart"></div>
               <div className="summary-info">
                 <h3>Rata-rata Kuis</h3>
                 <p className="summary-value">{calculateRataRata()}</p>
               </div>
             </div>
             <div className="summary-card">
-              <div className="summary-icon">🎯</div>
+              <div className="summary-icon icon-target"></div>
               <div className="summary-info">
                 <h3>PBL Selesai</h3>
                 <p className="summary-value">{nilaiPBL.length}</p>
@@ -89,13 +103,13 @@ function Nilai() {
               className={`tab-btn ${activeTab === 'kuis' ? 'active' : ''}`}
               onClick={() => setActiveTab('kuis')}
             >
-              📝 Nilai Kuis
+              <span className="icon-quiz inline-icon-sm"></span> Nilai Kuis
             </button>
             <button 
               className={`tab-btn ${activeTab === 'pbl' ? 'active' : ''}`}
               onClick={() => setActiveTab('pbl')}
             >
-              🎯 Nilai PBL
+              <span className="icon-target inline-icon-sm"></span> Nilai PBL
             </button>
           </div>
 
@@ -104,7 +118,7 @@ function Nilai() {
             <div className="nilai-content">
               {hasilKuis.length === 0 ? (
                 <div className="empty-state">
-                  <div className="empty-icon">📝</div>
+                  <div className="empty-icon icon-quiz"></div>
                   <h3>Belum ada hasil kuis</h3>
                   <p>Kerjakan kuis untuk melihat nilai Anda</p>
                   <button className="btn-primary" onClick={() => navigate('/siswa/kuis')}>
@@ -146,7 +160,7 @@ function Nilai() {
             <div className="nilai-content">
               {nilaiPBL.length === 0 ? (
                 <div className="empty-state">
-                  <div className="empty-icon">🎯</div>
+                  <div className="empty-icon icon-target"></div>
                   <h3>Belum ada nilai PBL</h3>
                   <p>Selesaikan project PBL untuk mendapatkan nilai</p>
                   <button className="btn-primary" onClick={() => navigate('/siswa/pbl')}>

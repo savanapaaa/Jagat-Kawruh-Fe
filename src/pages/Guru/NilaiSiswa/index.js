@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { getKuisList, getPBLList } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './NilaiSiswa.css';
 
 function NilaiSiswa() {
@@ -115,7 +116,7 @@ function NilaiSiswa() {
             <span></span>
           </button>
           <div className="header-content">
-            <h1>📊 Nilai Siswa</h1>
+            <h1><span className="icon-chart inline-icon"></span> Nilai Siswa</h1>
             <p>Kelola dan berikan nilai untuk siswa</p>
           </div>
         </div>
@@ -127,19 +128,19 @@ function NilaiSiswa() {
               className={`tab-btn ${activeTab === 'overview' ? 'active' : ''}`}
               onClick={() => setActiveTab('overview')}
             >
-              📋 Overview Nilai
+              <span className="icon-folder inline-icon-sm"></span> Overview Nilai
             </button>
             <button 
               className={`tab-btn ${activeTab === 'kuis' ? 'active' : ''}`}
               onClick={() => setActiveTab('kuis')}
             >
-              📝 Grading Kuis
+              <span className="icon-quiz inline-icon-sm"></span> Grading Kuis
             </button>
             <button 
               className={`tab-btn ${activeTab === 'pbl' ? 'active' : ''}`}
               onClick={() => setActiveTab('pbl')}
             >
-              🎯 Grading PBL
+              <span className="icon-target inline-icon-sm"></span> Grading PBL
             </button>
           </div>
 

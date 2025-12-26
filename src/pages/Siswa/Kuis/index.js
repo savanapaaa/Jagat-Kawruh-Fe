@@ -4,6 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
 import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getKuisList, getSoalByKuisId } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './Kuis.css';
 
 function Kuis() {
@@ -44,7 +45,7 @@ function Kuis() {
         deadline: '7 hari lagi',
         status: 'aktif',
         nilai: null,
-        icon: '📝',
+        iconType: 'quiz',
         color: '#4285F4'
       };
     });
@@ -62,7 +63,7 @@ function Kuis() {
       deadline: '2 hari lagi',
       status: 'aktif',
       nilai: null,
-      icon: '📝',
+      iconType: 'quiz',
       color: '#4285F4'
     },
   ];
@@ -90,9 +91,9 @@ function Kuis() {
               <span></span>
               <span></span>
             </button>
-            <div>
+            <div className="header-brand">
+              <div className="logo-icon icon-chart"></div>
               <h1 className="header-title">Kuis</h1>
-              <p className="header-date">{getCurrentDate()}</p>
             </div>
           </div>
           <div className="header-right">
@@ -134,7 +135,9 @@ function Kuis() {
             {filteredKuis.map(kuis => (
               <div key={kuis.id} className="kuis-card">
                 <div className="kuis-header" style={{ background: `${kuis.color}15` }}>
-                  <span className="kuis-icon" style={{ fontSize: '48px' }}>{kuis.icon}</span>
+                  <div className="kuis-icon" style={{ color: kuis.color }}>
+                    <div className={`icon-${kuis.iconType}`}></div>
+                  </div>
                   {kuis.status === 'selesai' && (
                     <div className="kuis-nilai-badge">
                       <span className="nilai-number">{kuis.nilai}</span>
@@ -145,22 +148,25 @@ function Kuis() {
                 <div className="kuis-content">
                   <h3 className="kuis-judul">{kuis.judul}</h3>
                   <p className="kuis-mapel">{kuis.mapel}</p>
-                  <p className="kuis-guru">👨‍🏫 {kuis.guru}</p>
+                  <p className="kuis-guru">
+                    <span className="small-icon icon-user"></span>
+                    {kuis.guru}
+                  </p>
                   
                   <div className="kuis-meta">
                     <div className="meta-item">
-                      <span className="meta-icon">📄</span>
+                      <span className="meta-icon icon-quiz"></span>
                       <span className="meta-text">{kuis.soal} Soal</span>
                     </div>
                     <div className="meta-item">
-                      <span className="meta-icon">⏱️</span>
+                      <span className="meta-icon icon-clock"></span>
                       <span className="meta-text">{kuis.durasi}</span>
                     </div>
                   </div>
 
                   {kuis.status === 'aktif' && (
                     <div className="kuis-deadline">
-                      <span className="deadline-icon">📅</span>
+                      <span className="deadline-icon icon-calendar"></span>
                       <span className="deadline-text">Deadline: {kuis.deadline}</span>
                     </div>
                   )}

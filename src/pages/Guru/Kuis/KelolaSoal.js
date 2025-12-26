@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar';
 import { getKuisById, getSoalByKuisId, addSoal, updateSoal, deleteSoal } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './KelolaSoal.css';
 
 function KelolaSoal() {
@@ -145,28 +146,28 @@ function KelolaSoal() {
         {/* Summary Cards */}
         <div className="summary-cards">
           <div className="summary-card">
-            <div className="summary-icon">📝</div>
+            <div className="summary-icon icon-quiz"></div>
             <div className="summary-content">
               <h3>{soalList.length}</h3>
               <p>Total Soal</p>
             </div>
           </div>
           <div className="summary-card">
-            <div className="summary-icon">⭐</div>
+            <div className="summary-icon icon-trophy"></div>
             <div className="summary-content">
               <h3>{totalPoin}</h3>
               <p>Total Poin</p>
             </div>
           </div>
           <div className="summary-card">
-            <div className="summary-icon">☑️</div>
+            <div className="summary-icon icon-check"></div>
             <div className="summary-content">
               <h3>{soalPilihanGanda}</h3>
               <p>Pilihan Ganda</p>
             </div>
           </div>
           <div className="summary-card">
-            <div className="summary-icon">✍️</div>
+            <div className="summary-icon icon-quiz"></div>
             <div className="summary-content">
               <h3>{soalEssay}</h3>
               <p>Essay</p>
@@ -267,7 +268,7 @@ function KelolaSoal() {
 
               <div className="form-actions">
                 <button type="submit" className="btn-submit">
-                  {editingSoal ? '💾 Update Soal' : '✅ Simpan Soal'}
+                  {editingSoal ? 'Update Soal' : 'Simpan Soal'}
                 </button>
                 <button type="button" className="btn-cancel" onClick={resetForm}>
                   Batal
@@ -280,7 +281,7 @@ function KelolaSoal() {
         {/* List Soal */}
         {soalList.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state-icon">📝</div>
+            <div className="empty-state-icon icon-quiz"></div>
             <h3>Belum ada soal</h3>
             <p>Klik "Tambah Soal" untuk mulai membuat soal kuis</p>
           </div>
@@ -292,9 +293,9 @@ function KelolaSoal() {
                   <div className="soal-number">Soal #{index + 1}</div>
                   <div className="soal-meta">
                     <span className={`badge-tipe ${soal.tipe}`}>
-                      {soal.tipe === 'pilihan_ganda' ? '☑️ Pilihan Ganda' : '✍️ Essay'}
+                      {soal.tipe === 'pilihan_ganda' ? 'Pilihan Ganda' : 'Essay'}
                     </span>
-                    <span className="badge-poin">⭐ {soal.poin} poin</span>
+                    <span className="badge-poin">{soal.poin} poin</span>
                   </div>
                 </div>
 
@@ -329,13 +330,13 @@ function KelolaSoal() {
                     className="btn-edit"
                     onClick={() => handleEdit(soal)}
                   >
-                    ✏️ Edit
+                    Edit
                   </button>
                   <button 
                     className="btn-delete"
                     onClick={() => handleDelete(soal.id)}
                   >
-                    🗑️ Hapus
+                    Hapus
                   </button>
                 </div>
               </div>

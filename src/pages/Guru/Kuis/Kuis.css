@@ -215,7 +215,12 @@
 }
 
 .kuis-icon {
-  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C9A961;
 }
 
 .status-badge {
@@ -354,8 +359,10 @@
 }
 
 .empty-state-icon {
-  font-size: 64px;
-  margin-bottom: 16px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  color: #CBD5E0;
 }
 
 .empty-state h3 {

@@ -228,12 +228,13 @@
 .pbl-icon {
   width: 48px;
   height: 48px;
+  min-width: 48px;
   background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  color: white;
 }
 
 .status-badge {
@@ -352,9 +353,11 @@
 }
 
 .empty-icon {
-  font-size: 80px;
-  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
   opacity: 0.5;
+  color: #CBD5E0;
 }
 
 .empty-state h3 {

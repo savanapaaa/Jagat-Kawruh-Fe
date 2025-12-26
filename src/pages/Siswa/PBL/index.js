@@ -4,6 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
 import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getPBLList, getPBLProgress } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './PBL.css';
 
 function PBL() {
@@ -45,7 +46,7 @@ function PBL() {
         currentSintaks: progress.currentSintaks || 1,
         currentTahap: progress.currentTahap || 1,
         totalSintaks: 5,
-        icon: '🎯',
+        iconType: 'target',
         color: progress.status === 'selesai' ? '#48BB78' : progress.status === 'sedang' ? '#4299E1' : '#D4AF37',
       };
     });
@@ -86,9 +87,9 @@ function PBL() {
               <span></span>
               <span></span>
             </button>
-            <div>
+            <div className="header-brand">
+              <div className="logo-icon icon-target"></div>
               <h1 className="header-title">Problem Based Learning</h1>
-              <p className="header-date">{getCurrentDate()}</p>
             </div>
           </div>
           <div className="header-right">
@@ -140,15 +141,21 @@ function PBL() {
                 <div key={pbl.id} className="pbl-card-siswa">
                   <div className="pbl-card-header">
                     <div className="pbl-icon-large" style={{ background: `${pbl.color}15` }}>
-                      <span style={{ fontSize: '32px' }}>{pbl.icon}</span>
+                      <div className="pbl-icon-wrapper" style={{ color: pbl.color }}>
+                        <div className={`icon-${pbl.iconType}`}></div>
+                      </div>
                     </div>
                     <div className="deadline-badge" style={{ color: deadlineInfo.color, borderColor: deadlineInfo.color }}>
-                      ⏰ {deadlineInfo.text}
+                      <span className="small-icon icon-clock"></span>
+                      {deadlineInfo.text}
                     </div>
                   </div>
 
                   <h3 className="pbl-card-title">{pbl.judul}</h3>
-                  <p className="pbl-card-kelas">📖 {pbl.kelas}</p>
+                  <p className="pbl-card-kelas">
+                    <span className="small-icon icon-book"></span>
+                    {pbl.kelas}
+                  </p>
                   <p className="pbl-card-desc">{pbl.deskripsi}</p>
 
                   <div className="pbl-progress-info">
@@ -169,7 +176,7 @@ function PBL() {
                     style={{ background: pbl.color }}
                     onClick={() => navigate(`/siswa/pbl/${pbl.id}/kerjakan`)}
                   >
-                    {pbl.status === 'selesai' ? '✅ Lihat Hasil' : pbl.status === 'sedang' ? '▶️ Lanjutkan' : '🚀 Mulai Kerjakan'}
+                    {pbl.status === 'selesai' ? 'Lihat Hasil' : pbl.status === 'sedang' ? 'Lanjutkan' : 'Mulai Kerjakan'}
                   </button>
                 </div>
               );
@@ -177,7 +184,7 @@ function PBL() {
 
             {filteredPBL.length === 0 && (
               <div className="empty-state-siswa">
-                <div className="empty-icon">🎯</div>
+                <div className="empty-icon icon-target"></div>
                 <h3>Belum Ada Project PBL</h3>
                 <p>Guru belum membuat project Problem Based Learning untuk kelas Anda</p>
               </div>

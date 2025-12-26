@@ -1,0 +1,524 @@
+/* ========== MINIMALIST ICONS WITH CSS ========== */
+
+/* Icon Container Base */
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Small inline icons (for text) */
+.small-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* Quiz/Document Icon */
+.icon-quiz {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-quiz::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 75%;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.icon-quiz::after {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 2px;
+  background: currentColor;
+  top: 45%;
+  box-shadow: 
+    0 -6px 0 currentColor,
+    0 6px 0 currentColor;
+}
+
+/* Book/Materi Icon */
+.icon-book {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-book::before {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 70%;
+  border: 2px solid currentColor;
+  border-left: 5px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.icon-book::after {
+  content: '';
+  position: absolute;
+  width: 1.5px;
+  height: 35%;
+  background: currentColor;
+  left: calc(50% - 10%);
+}
+
+/* Target/PBL Icon */
+.icon-target {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-target::before {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.icon-target::after {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 35%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 8px currentColor;
+}
+
+/* Trophy/Nilai Icon */
+.icon-trophy {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-trophy::before {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 45%;
+  top: 20%;
+  border: 2px solid currentColor;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: transparent;
+  box-shadow: 
+    -10px 0 0 -7px currentColor,
+    10px 0 0 -7px currentColor,
+    -10px -4px 0 -7px currentColor,
+    10px -4px 0 -7px currentColor;
+}
+
+.icon-trophy::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 2px;
+  bottom: 20%;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* Chart/Analytics Icon */
+.icon-chart {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-chart::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 50%;
+  bottom: 25%;
+  left: calc(50% - 15px);
+  background: currentColor;
+  border-radius: 2px 2px 0 0;
+}
+
+.icon-chart::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 70%;
+  bottom: 25%;
+  right: calc(50% - 15px);
+  background: currentColor;
+  border-radius: 2px 2px 0 0;
+  box-shadow: -10px 6px 0 currentColor;
+}
+
+/* User/Profile Icon */
+.icon-user {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-user::before {
+  content: '';
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  top: 22%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.icon-user::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 35%;
+  bottom: 18%;
+  border: 2px solid currentColor;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background: transparent;
+  border-bottom: none;
+}
+
+/* Folder Icon */
+.icon-folder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-folder::before {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 55%;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.icon-folder::after {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 7px;
+  top: 18%;
+  left: 17.5%;
+  background: currentColor;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Clock/Time Icon */
+.icon-clock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-clock::before {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.icon-clock::after {
+  content: '';
+  position: absolute;
+  width: 1.5px;
+  height: 22%;
+  background: currentColor;
+  top: 39%;
+  transform-origin: bottom center;
+  box-shadow: 13px 0 0 -0.5px currentColor;
+}
+
+/* Calendar Icon */
+.icon-calendar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-calendar::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 65%;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+  top: 25%;
+}
+
+.icon-calendar::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background: currentColor;
+  top: 38%;
+  box-shadow: 
+    0 -8px 0 -0.5px currentColor,
+    0 -8px 0 -0.5px currentColor;
+}
+
+/* Checkmark Icon */
+.icon-check {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-check::before {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 3px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  left: 22%;
+  top: 52%;
+}
+
+.icon-check::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: currentColor;
+  transform: rotate(45deg);
+  right: 18%;
+  top: 45%;
+}
+
+/* Plus Icon */
+.icon-plus {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-plus::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: currentColor;
+}
+
+.icon-plus::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 50%;
+  background: currentColor;
+}
+
+/* Arrow Icon */
+.icon-arrow-right {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-arrow-right::before {
+  content: '';
+  position: absolute;
+  width: 45%;
+  height: 3px;
+  background: currentColor;
+  left: 20%;
+}
+
+.icon-arrow-right::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-right: 3px solid currentColor;
+  border-top: 3px solid currentColor;
+  transform: rotate(45deg);
+  right: 20%;
+}
+
+/* Progress Circle */
+.icon-progress {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-progress::before {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border: 2.5px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.3;
+}
+
+.icon-progress::after {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border: 2.5px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-radius: 50%;
+  background: transparent;
+  transform: rotate(45deg);
+}
+
+/* Lock Icon */
+.icon-lock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-lock::before {
+  content: '';
+  position: absolute;
+  width: 45%;
+  height: 40%;
+  bottom: 20%;
+  border: 2.5px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.icon-lock::after {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 30%;
+  top: 22%;
+  border: 2.5px solid currentColor;
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  background: transparent;
+}
+
+/* Download Icon */
+.icon-download {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-download::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 45%;
+  top: 20%;
+  background: currentColor;
+}
+
+.icon-download::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-bottom: 3px solid currentColor;
+  border-left: 3px solid currentColor;
+  transform: rotate(-45deg);
+  bottom: 28%;
+}
+
+/* ========== RESPONSIVE SIZING ========== */
+@media (max-width: 968px) {
+  .icon-quiz::before,
+  .icon-book::before,
+  .icon-target::before,
+  .icon-trophy::before,
+  .icon-folder::before {
+    border-width: 2px;
+  }
+  
+  .icon-clock::after,
+  .icon-quiz::after {
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-quiz::before,
+  .icon-book::before,
+  .icon-target::before,
+  .icon-trophy::before,
+  .icon-folder::before {
+    border-width: 1.5px;
+  }
+}

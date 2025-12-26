@@ -4,6 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
 import NotificationDropdown from '../../../components/NotificationDropdown';
 import { getMateriList, getMateriProgress } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './Materi.css';
 
 function Materi() {
@@ -43,7 +44,7 @@ function Materi() {
         durasi: '45 menit',
         bab: `Bab ${index + 1}`,
         status: progress.status || 'belum',
-        thumbnail: '📚',
+        iconType: 'book',
         color: progress.status === 'selesai' ? '#48BB78' : progress.status === 'berjalan' ? '#4299E1' : '#D4AF37',
         deskripsi: materi.deskripsi,
         file: materi.file
@@ -91,9 +92,9 @@ function Materi() {
               <span></span>
               <span></span>
             </button>
-            <div>
+            <div className="header-brand">
+              <div className="logo-icon icon-book"></div>
               <h1 className="header-title">Materi Pembelajaran</h1>
-              <p className="header-date">{getCurrentDate()}</p>
             </div>
           </div>
           <div className="header-right">
@@ -141,16 +142,24 @@ function Materi() {
             {filteredMateri.map(materi => (
               <div key={materi.id} className="materi-card-page">
                 <div className="materi-thumbnail" style={{ background: `${materi.color}15` }}>
-                  <span style={{ fontSize: '48px' }}>{materi.thumbnail}</span>
+                  <div className="materi-icon" style={{ color: materi.color }}>
+                    <div className={`icon-${materi.iconType}`}></div>
+                  </div>
                 </div>
                 <div className="materi-content">
                   <span className="materi-bab">{materi.bab}</span>
                   <h3 className="materi-judul">{materi.judul}</h3>
                   <p className="materi-mapel">{materi.mapel}</p>
-                  <p className="materi-guru">👨‍🏫 {materi.guru}</p>
+                  <p className="materi-guru">
+                    <span className="small-icon icon-user"></span>
+                    {materi.guru}
+                  </p>
                   
                   <div className="materi-meta">
-                    <span className="materi-durasi">⏱️ {materi.durasi}</span>
+                    <span className="materi-durasi">
+                      <span className="small-icon icon-clock"></span>
+                      {materi.durasi}
+                    </span>
                   </div>
 
                   <div className="materi-progress-section">

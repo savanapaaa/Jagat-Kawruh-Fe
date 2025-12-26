@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar';
 import { getPBLList, addPBL, updatePBL, deletePBL } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './PBL.css';
 
 function KelolaPBL() {
@@ -224,7 +225,7 @@ function KelolaPBL() {
           {pblList.map(pbl => (
             <div key={pbl.id} className="pbl-card">
               <div className="pbl-header">
-                <div className="pbl-icon">🎯</div>
+                <div className="pbl-icon icon-target"></div>
                 <span className={`status-badge ${pbl.status.toLowerCase()}`}>
                   {pbl.status}
                 </span>
@@ -251,13 +252,13 @@ function KelolaPBL() {
 
               <div className="pbl-actions">
                 <button className="btn-detail" onClick={() => navigate(`/guru/pbl/${pbl.id}/detail`)}>
-                  📋 Detail & Tahapan
+                  Detail & Tahapan
                 </button>
                 <button className="btn-edit" onClick={() => handleEdit(pbl)}>
-                  ✏️ Edit
+                  Edit
                 </button>
                 <button className="btn-delete" onClick={() => handleDelete(pbl.id)}>
-                  🗑️ Hapus
+                  Hapus
                 </button>
               </div>
             </div>
@@ -265,7 +266,7 @@ function KelolaPBL() {
 
           {pblList.length === 0 && !showForm && (
             <div className="empty-state">
-              <div className="empty-icon">🎯</div>
+              <div className="empty-icon icon-target"></div>
               <h3>Belum Ada PBL Project</h3>
               <p>Klik tombol "Tambah PBL Project" untuk membuat project Problem Based Learning pertama Anda</p>
             </div>

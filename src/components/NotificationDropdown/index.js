@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './NotificationDropdown.css';
+import '../../styles/icons.css';
 
 const NotificationDropdown = ({ userEmail }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,13 +76,13 @@ const NotificationDropdown = ({ userEmail }) => {
 
   const getNotificationIcon = (tipe) => {
     switch (tipe) {
-      case 'materi': return '📚';
-      case 'kuis': return '📝';
-      case 'nilai': return '🎯';
-      case 'pbl': return '🎓';
-      case 'guru': return '👨‍🏫';
-      case 'info': return 'ℹ️';
-      default: return '🔔';
+      case 'materi': return 'book';
+      case 'kuis': return 'quiz';
+      case 'nilai': return 'target';
+      case 'pbl': return 'target';
+      case 'guru': return 'user';
+      case 'info': return 'calendar';
+      default: return 'calendar';
     }
   };
 
@@ -101,7 +102,7 @@ const NotificationDropdown = ({ userEmail }) => {
   return (
     <div className="notification-wrapper" ref={dropdownRef}>
       <button className="notif-btn" onClick={() => setIsOpen(!isOpen)}>
-        🔔
+        <span className="icon-calendar"></span>
         {getUnreadCount() > 0 && (
           <span className="notif-badge">{getUnreadCount()}</span>
         )}
@@ -121,7 +122,7 @@ const NotificationDropdown = ({ userEmail }) => {
           <div className="notif-list">
             {notifications.length === 0 ? (
               <div className="notif-empty">
-                <span className="empty-icon">🔕</span>
+                <div className="empty-icon icon-calendar"></div>
                 <p>Tidak ada notifikasi</p>
               </div>
             ) : (
@@ -131,8 +132,7 @@ const NotificationDropdown = ({ userEmail }) => {
                   className={`notif-item ${!notif.isRead ? 'unread' : ''}`}
                   onClick={() => !notif.isRead && markAsRead(notif.id)}
                 >
-                  <div className="notif-icon">
-                    {getNotificationIcon(notif.tipe)}
+                  <div className={`notif-icon icon-${getNotificationIcon(notif.tipe)}`}>
                   </div>
                   <div className="notif-content">
                     <div className="notif-title">{notif.judul}</div>

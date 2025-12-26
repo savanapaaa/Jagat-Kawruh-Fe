@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
   MATERI_PROGRESS: 'jagat_kawruh_materi_progress',
   PBL: 'jagat_kawruh_pbl',
   PBL_PROGRESS: 'jagat_kawruh_pbl_progress',
+  SISWA: 'jagat_kawruh_siswa',
 };
 
 // ============= MATERI SERVICE =============
@@ -439,4 +440,119 @@ export const unlockNextTahap = (userId, pblId, nextSintaks, nextTahap, totalProg
   }
 };
 
+// ============= SISWA SERVICE =============
 
+export const getSiswaList = () => {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.SISWA);
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error('Error getting siswa:', error);
+    return [];
+  }
+};
+
+export const getSiswaByKelas = (kelas) => {
+  try {
+    const siswaList = getSiswaList();
+    return kelas ? siswaList.filter(s => s.kelas === kelas) : siswaList;
+  } catch (error) {
+    console.error('Error getting siswa by kelas:', error);
+    return [];
+  }
+};
+
+export const getSiswaById = (id) => {
+  try {
+    const siswaList = getSiswaList();
+    return siswaList.find(s => s.id === id);
+  } catch (error) {
+    console.error('Error getting siswa by id:', error);
+    return null;
+  }
+};
+
+export const addSiswa = (siswa) => {
+  try {
+    const siswaList = getSiswaList();
+    
+    // Check duplicate NIS
+    if (siswaList.some(s => s.nis === siswa.nis)) {
+      throw new Error('NIS sudah terdaftar');
+    }
+    
+    // Check duplicate email
+    if (siswaList.some(s => s.email === siswa.email)) {
+      throw new Error('Email sudah terdaftar');
+    }
+    
+    const newSiswa = {
+      ...siswa,
+      id: `siswa_${Date.now()}`,
+      createdAt: new Date().toISOString(),
+    };
+    
+    siswaList.push(newSiswa);
+    localStorage.setItem(STORAGE_KEYS.SISWA, JSON.stringify(siswaList));
+    return newSiswa;
+  } catch (error) {
+    console.error('Error adding siswa:', error);
+    throw error;
+  }
+};
+
+export const updateSiswa = (id, updatedData) => {
+  try {
+    const siswaList = getSiswaList();
+    const index = siswaList.findIndex(s => s.id === id);
+    
+    if (index === -1) {
+      throw new Error('Siswa tidak ditemukan');
+    }
+    
+    // Check duplicate NIS (exclude current siswa)
+    if (updatedData.nis && siswaList.some((s, idx) => s.nis === updatedData.nis && idx !== index)) {
+      throw new Error('NIS sudah terdaftar');
+    }
+    
+    // Check duplicate email (exclude current siswa)
+    if (updatedData.email && siswaList.some((s, idx) => s.email === updatedData.email && idx !== index)) {
+      throw new Error('Email sudah terdaftar');
+    }
+    
+    siswaList[index] = { 
+      ...siswaList[index], 
+      ...updatedData,
+      updatedAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem(STORAGE_KEYS.SISWA, JSON.stringify(siswaList));
+    return siswaList[index];
+  } catch (error) {
+    console.error('Error updating siswa:', error);
+    throw error;
+  }
+};
+
+export const deleteSiswa = (id) => {
+  try {
+    const siswaList = getSiswaList();
+    const filtered = siswaList.filter(s => s.id !== id);
+    localStorage.setItem(STORAGE_KEYS.SISWA, JSON.stringify(filtered));
+    return true;
+  } catch (error) {
+    console.error('Error deleting siswa:', error);
+    throw error;
+  }
+};
+
+export const getKelasList = () => {
+  try {
+    const siswaList = getSiswaList();
+    const kelasSet = new Set(siswaList.map(s => s.kelas).filter(Boolean));
+    return Array.from(kelasSet).sort();
+  } catch (error) {
+    console.error('Error getting kelas list:', error);
+    return [];
+  }
+};

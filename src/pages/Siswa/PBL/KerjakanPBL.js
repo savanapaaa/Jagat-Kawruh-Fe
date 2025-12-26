@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import Sidebar from '../../../components/Sidebar';
@@ -16,6 +16,7 @@ function KerjakanPBL() {
   const [currentTahap, setCurrentTahap] = useState(1);
   const [jawaban, setJawaban] = useState('');
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const editorRef = useRef(null);
 
   useEffect(() => {
     const pblData = getPBLById(pblId);
@@ -35,13 +36,108 @@ function KerjakanPBL() {
       // Load existing answer if any
       const submissionKey = `${userProgress.currentSintaks}-${userProgress.currentTahap}`;
       if (userProgress.submissions && userProgress.submissions[submissionKey]) {
-        setJawaban(userProgress.submissions[submissionKey].jawaban);
+        const savedAnswer = userProgress.submissions[submissionKey].jawaban;
+        setJawaban(savedAnswer);
+        // Set editor content
+        if (editorRef.current) {
+          editorRef.current.innerHTML = savedAnswer || '';
+        }
         setUploadedFiles(userProgress.submissions[submissionKey].files || []);
       }
     } else {
       navigate('/siswa/pbl');
     }
   }, [pblId, user, navigate]);
+
+  // Auto-save to localStorage
+  useEffect(() => {
+    if (jawaban && pblId && currentSintaks && currentTahap) {
+      const storageKey = `pbl_draft_${pblId}_${currentSintaks}_${currentTahap}`;
+      localStorage.setItem(storageKey, jawaban);
+    }
+  }, [jawaban, pblId, currentSintaks, currentTahap]);
+
+  // Load draft from localStorage
+  useEffect(() => {
+    if (pblId && currentSintaks && currentTahap) {
+      const storageKey = `pbl_draft_${pblId}_${currentSintaks}_${currentTahap}`;
+      const draft = localStorage.getItem(storageKey);
+      if (draft && !jawaban) {
+        setJawaban(draft);
+        if (editorRef.current) {
+          editorRef.current.innerHTML = draft;
+        }
+      }
+    }
+  }, [pblId, currentSintaks, currentTahap]);
+
+  // Editor commands
+  const execCommand = (command, value = null) => {
+    document.execCommand(command, false, value);
+    if (editorRef.current) {
+      setJawaban(editorRef.current.innerHTML);
+    }
+  };
+
+  const handleEditorInput = () => {
+    if (editorRef.current) {
+      setJawaban(editorRef.current.innerHTML);
+    }
+  };
+
+  const handleEditorPaste = (e) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text/plain');
+    document.execCommand('insertText', false, text);
+  };
+
+  const insertLink = () => {
+    const url = prompt('Masukkan URL:');
+    if (url) {
+      execCommand('createLink', url);
+    }
+  };
+
+  const insertEmoji = (emoji) => {
+    document.execCommand('insertText', false, emoji);
+    if (editorRef.current) {
+      setJawaban(editorRef.current.innerHTML);
+    }
+  };
+
+  const insertFileToEditor = (file) => {
+    if (!editorRef.current) return;
+
+    const isImage = file.type.startsWith('image/');
+    
+    if (isImage) {
+      // Insert image preview dalam editor
+      const img = `<img src="${file.data}" alt="${file.name}" class="editor-image" />`;
+      document.execCommand('insertHTML', false, img);
+    } else {
+      // Insert file attachment card dalam editor
+      const fileIcon = file.type.includes('pdf') ? '📄' : 
+                      file.type.includes('word') ? '📝' : 
+                      file.type.includes('excel') ? '📊' : 
+                      file.type.includes('powerpoint') ? '📑' : '📎';
+      
+      const fileSize = (file.size / 1024).toFixed(1) + ' KB';
+      const attachmentCard = `
+        <div class="editor-attachment" contenteditable="false">
+          <span class="attachment-icon">${fileIcon}</span>
+          <div class="attachment-info">
+            <span class="attachment-name">${file.name}</span>
+            <span class="attachment-size">${fileSize}</span>
+          </div>
+        </div>
+      `;
+      document.execCommand('insertHTML', false, attachmentCard);
+    }
+    
+    if (editorRef.current) {
+      setJawaban(editorRef.current.innerHTML);
+    }
+  };
 
   if (!pbl || !progress) {
     return <div>Loading...</div>;
@@ -73,7 +169,13 @@ function KerjakanPBL() {
     });
 
     Promise.all(filePromises).then(newFiles => {
+      // Simpan file di state untuk submit
       setUploadedFiles(prev => [...prev, ...newFiles]);
+      
+      // Insert file ke dalam editor
+      newFiles.forEach(file => {
+        insertFileToEditor(file);
+      });
     });
   };
 
@@ -119,7 +221,7 @@ function KerjakanPBL() {
     if (isLastSintaks && isLastTahapInSintaks) {
       // Completed all
       unlockNextTahap(user?.email || 'guest', parseInt(pblId), nextSintaks, nextTahap, 100);
-      alert('🎉 Selamat! Anda telah menyelesaikan seluruh tahapan PBL!');
+      alert('Selamat! Anda telah menyelesaikan seluruh tahapan PBL!');
       navigate('/siswa/pbl');
     } else {
       unlockNextTahap(user?.email || 'guest', parseInt(pblId), nextSintaks, nextTahap, newProgress);
@@ -132,7 +234,7 @@ function KerjakanPBL() {
       const updatedProgress = getPBLProgress(user?.email || 'guest')[pblId];
       setProgress(updatedProgress);
       
-      alert('✅ Jawaban berhasil disimpan! Lanjut ke tahap berikutnya.');
+      alert('Jawaban berhasil disimpan! Lanjut ke tahap berikutnya.');
     }
   };
 
@@ -156,7 +258,7 @@ function KerjakanPBL() {
 
   const handleNavigateToTahap = (sintaksNomor, tahapNomor) => {
     if (!isTahapUnlocked(sintaksNomor, tahapNomor)) {
-      alert('🔒 Tahap ini masih terkunci. Selesaikan tahap sebelumnya terlebih dahulu.');
+      alert('Tahap ini masih terkunci. Selesaikan tahap sebelumnya terlebih dahulu.');
       return;
     }
 
@@ -165,10 +267,20 @@ function KerjakanPBL() {
     
     const submissionKey = `${sintaksNomor}-${tahapNomor}`;
     if (progress.submissions && progress.submissions[submissionKey]) {
-      setJawaban(progress.submissions[submissionKey].jawaban);
+      const savedAnswer = progress.submissions[submissionKey].jawaban;
+      setJawaban(savedAnswer);
+      if (editorRef.current) {
+        editorRef.current.innerHTML = savedAnswer || '';
+      }
       setUploadedFiles(progress.submissions[submissionKey].files || []);
     } else {
-      setJawaban('');
+      // Load draft
+      const storageKey = `pbl_draft_${pblId}_${sintaksNomor}_${tahapNomor}`;
+      const draft = localStorage.getItem(storageKey);
+      setJawaban(draft || '');
+      if (editorRef.current) {
+        editorRef.current.innerHTML = draft || '';
+      }
       setUploadedFiles([]);
     }
   };
@@ -278,33 +390,163 @@ function KerjakanPBL() {
             </div>
 
             <div className="jawaban-section">
-              <label>Isi jawaban anda</label>
-              <textarea
-                value={jawaban}
-                onChange={(e) => setJawaban(e.target.value)}
-                placeholder="Ketik jawaban Anda di sini..."
-                rows="12"
-                disabled={isTahapCompleted(currentSintaks, currentTahap)}
+              <label>✍️ Tulis Jawaban Anda</label>
+              
+              {/* Rich Text Editor Toolbar */}
+              {!isTahapCompleted(currentSintaks, currentTahap) && (
+                <div className="editor-toolbar">
+                  <div className="toolbar-group">
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('bold')}
+                      title="Bold (Ctrl+B)"
+                    >
+                      <strong>B</strong>
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('italic')}
+                      title="Italic (Ctrl+I)"
+                    >
+                      <em>I</em>
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('underline')}
+                      title="Underline (Ctrl+U)"
+                    >
+                      <u>U</u>
+                    </button>
+                  </div>
+
+                  <div className="toolbar-divider"></div>
+
+                  <div className="toolbar-group">
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('justifyLeft')}
+                      title="Rata Kiri"
+                    >
+                      <span className="icon">←</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('justifyCenter')}
+                      title="Rata Tengah"
+                    >
+                      <span className="icon">⚌</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('justifyRight')}
+                      title="Rata Kanan"
+                    >
+                      <span className="icon">→</span>
+                    </button>
+                  </div>
+
+                  <div className="toolbar-divider"></div>
+
+                  <div className="toolbar-group">
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('insertUnorderedList')}
+                      title="Bullet List"
+                    >
+                      <span className="icon">☰</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => execCommand('insertOrderedList')}
+                      title="Numbered List"
+                    >
+                      <span className="icon">⁝</span>
+                    </button>
+                  </div>
+
+                  <div className="toolbar-divider"></div>
+
+                  <div className="toolbar-group">
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={insertLink}
+                      title="Insert Link"
+                    >
+                      🔗
+                    </button>
+                  </div>
+
+                  <div className="toolbar-divider"></div>
+
+                  <div className="toolbar-group emoji-group">
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => insertEmoji('😊')}
+                      title="Insert Emoji"
+                    >
+                      😊
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => insertEmoji('👍')}
+                    >
+                      👍
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => insertEmoji('💡')}
+                    >
+                      💡
+                    </button>
+                    <button
+                      type="button"
+                      className="toolbar-btn"
+                      onClick={() => insertEmoji('✨')}
+                    >
+                      ✨
+                    </button>
+                  </div>
+
+                  <div className="toolbar-divider"></div>
+
+                  <div className="toolbar-group file-group">
+                    <label className="toolbar-btn toolbar-btn-file" title="Upload File/Gambar">
+                      <span className="icon">📎</span>
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                        onChange={handleFileUpload}
+                        style={{ display: 'none' }}
+                      />
+                    </label>
+                  </div>
+                </div>
+              )}
+
+              {/* Rich Text Editor Area */}
+              <div
+                ref={editorRef}
+                className={`editor-content ${isTahapCompleted(currentSintaks, currentTahap) ? 'disabled' : ''}`}
+                contentEditable={!isTahapCompleted(currentSintaks, currentTahap)}
+                onInput={handleEditorInput}
+                onPaste={handleEditorPaste}
+                data-placeholder="Tuliskan jawaban Anda di sini... Anda dapat menggunakan toolbar di atas untuk memformat teks."
+                suppressContentEditableWarning={true}
               />
             </div>
-
-            {/* File Upload Section */}
-            {!isTahapCompleted(currentSintaks, currentTahap) && (
-              <div className="file-upload-section">
-                <label className="file-upload-label">
-                  📎 Upload File/Gambar (Opsional)
-                  <input
-                    type="file"
-                    multiple
-                    accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                    onChange={handleFileUpload}
-                    className="file-input-hidden"
-                  />
-                  <span className="file-upload-btn">Pilih File</span>
-                </label>
-                <p className="file-upload-hint">Format: Gambar, PDF, Word, Excel, PowerPoint (Max 5MB per file)</p>
-              </div>
-            )}
 
             {/* Uploaded Files Preview */}
             {uploadedFiles.length > 0 && (

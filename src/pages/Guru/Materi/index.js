@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { getMateriList, addMateri, updateMateri, deleteMateri } from '../../../services/dataService';
+import '../../../styles/icons.css';
 import './Materi.css';
 
 function KelolaMateri() {
@@ -151,7 +152,7 @@ function KelolaMateri() {
 
             <div className="form-actions">
               <button type="submit" className="btn-submit">
-                {editingMateri ? '💾 Update' : '✅ Simpan'}
+                {editingMateri ? 'Update' : 'Simpan'}
               </button>
               <button type="button" className="btn-cancel" onClick={resetForm}>
                 Batal
@@ -163,7 +164,7 @@ function KelolaMateri() {
 
       {materiList.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state-icon">📚</div>
+          <div className="empty-state-icon icon-book"></div>
           <h3>Belum ada materi</h3>
           <p>Klik "Tambah Materi" untuk memulai mengelola materi pembelajaran</p>
         </div>
@@ -172,27 +173,27 @@ function KelolaMateri() {
           {materiList.map((materi) => (
             <div key={materi.id} className="materi-card">
               <div className="materi-thumbnail">
-                📚
+                <div className="icon-book"></div>
               </div>
               <div className="materi-content">
                 <h3 className="materi-judul">{materi.judul}</h3>
                 <span className="materi-kelas">{materi.kelas}</span>
                 <p className="materi-deskripsi">{materi.deskripsi}</p>
                 <div className="materi-file">
-                  📄 {materi.file}
+                  <span className="icon-folder inline-icon-sm"></span> {materi.file}
                 </div>
                 <div className="materi-actions">
                   <button 
                     className="btn-edit"
                     onClick={() => handleEdit(materi)}
                   >
-                    ✏️ Edit
+                    Edit
                   </button>
                   <button 
                     className="btn-delete"
                     onClick={() => handleDelete(materi.id)}
                   >
-                    🗑️ Hapus
+                    Hapus
                   </button>
                 </div>
               </div>
